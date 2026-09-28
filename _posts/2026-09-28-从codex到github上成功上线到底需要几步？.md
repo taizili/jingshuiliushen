@@ -1,6 +1,6 @@
 ---
 title: 从codex到github上成功上线到底需要几步？
-date: 2026-09-29
+date: 2026-09-28
 category: 学习心得
 excerpt: 记录了成功上线第一个个人学习网站的整个环节
 ---
