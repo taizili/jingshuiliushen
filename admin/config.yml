@@ -7,7 +7,7 @@ backend:
   # 一次性配置：注册 https://decapbridge.com 后，
   # 把它给你的 base_url 和 auth_endpoint 替换到下面两行
   base_url: https://auth.decapbridge.com
-  auth_endpoint: /sites/13b42e81-e184-4d7a-b2de-27db3ac264a3/pkce
+  auth_endpoint: auth/13b42e81-e184-4d7a-b2de-27db3ac264a3/pkce
 
 site_url: https://taizili.github.io
 
