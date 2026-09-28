@@ -1,14 +1,16 @@
 locale: zh_Hans
 
 backend:
-  name: github
-  repo: taizili/jingshuiliushen
+  name: git-gateway
+  repo: taizili/jingshuiliushen        # 请确保这里填对，例如 octocat/my-website
   branch: main
-  # 一次性配置：注册 https://decapbridge.com 后，
-  # 把它给你的 base_url 和 auth_endpoint 替换到下面两行
+  auth_type: pkce
   base_url: https://auth.decapbridge.com
   auth_endpoint: /sites/13b42e81-e184-4d7a-b2de-27db3ac264a3/pkce
   auth_token_endpoint: /sites/13b42e81-e184-4d7a-b2de-27db3ac264a3/token
+  gateway_url: https://gateway.decapbridge.com
+
+# 下面的 media_folder 等配置保持你原来的不变
 site_url: https://taizili.github.io
 
 media_folder: assets/images
