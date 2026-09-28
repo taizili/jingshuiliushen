@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | 迟雨的学习笔记</title>
-  <meta name="description" content="{{ page.excerpt }}">
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- 动态读取文章标题和网站名称 -->
+  <title>{{ page.title }} | {{ site.data.site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.data.site.description }}">
+  
+  <!-- 核心修复：使用 relative_url 确保无论在哪个层级都能正确加载 css -->
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  
   <style>
-    /* 简单的文章页面样式补充 */
+    /* 文章页专属补充样式 */
     .post-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
     .post-header { margin-bottom: 30px; text-align: center; }
     .post-title { font-size: 2em; margin-bottom: 10px; }
@@ -20,9 +24,11 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="/" class="logo">迟雨<span class="logo-dot">.</span></a>
+      <!-- 动态读取后台填写的名字 -->
+      <a href="{{ '/' | relative_url }}" class="logo">{{ site.data.site.name }}<span class="logo-dot">.</span></a>
       <nav class="site-nav">
-        <a href="/#latest" class="nav-link">返回首页</a>
+        <!-- 确保正确跳回主页 -->
+        <a href="{{ '/#latest' | relative_url }}" class="nav-link">返回首页</a>
       </nav>
     </div>
   </header>
@@ -47,7 +53,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© 2026 迟雨的学习笔记 · 用文字固化思考</p>
+      <!-- 动态读取当前年份和网站名称 -->
+      <p>© {{ site.time | date: "%Y" }} {{ site.data.site.title }} · 用文字固化思考</p>
     </div>
   </footer>
 </body>
