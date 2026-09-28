@@ -2,7 +2,7 @@ locale: zh_Hans
 
 backend:
   name: git-gateway
-  repo: taizili/jingshuiliushen        # 请确保这里填对，例如 octocat/my-website
+  repo: taizili/jingshuiliushen
   branch: main
   auth_type: pkce
   base_url: https://auth.decapbridge.com
@@ -10,7 +10,6 @@ backend:
   auth_token_endpoint: /sites/13b42e81-e184-4d7a-b2de-27db3ac264a3/token
   gateway_url: https://gateway.decapbridge.com
 
-# 下面的 media_folder 等配置保持你原来的不变
 site_url: https://taizili.github.io
 
 media_folder: assets/images
@@ -21,7 +20,7 @@ collections:
     label: 文章
     label_singular: 文章
     folder: _posts
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # 👈 修改 2：新增这一行，让生成的文件名自带日期
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true
     extension: md
     format: frontmatter
@@ -33,7 +32,26 @@ collections:
       - { label: 分类, name: category, widget: select, options: [实验方法, 学习心得, 踩坑记录] }
       - { label: 网址后缀（小写英文和短横线，留空自动生成）, name: slug, widget: string, required: false, pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "只允许小写英文字母、数字和短横线"] }
       - { label: 摘要（显示在首页）, name: excerpt, widget: text }
-      - { label: 正文, name: body, widget: markdown }
+
+      # 核心防护：后台发文自动注入，禁止 Jekyll 将正文当模板解析，彻底杜绝报错与截断
+      - { label: "Liquid 解析保护", name: render_with_liquid, widget: hidden, default: false }
+
+      # 正文编辑器：启用代码块按钮与富文本/纯文本双模式
+      - label: 正文
+        name: body
+        widget: markdown
+        modes: ["rich_text", "raw"]
+        buttons:
+          - bold
+          - italic
+          - code
+          - link
+          - heading-two
+          - heading-three
+          - quote
+          - code-block
+          - bulleted-list
+          - numbered-list
 
   - name: settings
     label: 网站设置
