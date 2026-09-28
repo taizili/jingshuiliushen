@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | 迟雨的学习笔记</title>
+  <meta name="description" content="{{ page.excerpt }}">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* 简单的文章页面样式补充 */
+    .post-container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    .post-header { margin-bottom: 30px; text-align: center; }
+    .post-title { font-size: 2em; margin-bottom: 10px; }
+    .post-meta { color: #666; font-size: 0.9em; }
+    .post-content { line-height: 1.8; font-size: 1.1em; }
+    .post-content h2 { margin-top: 2em; }
+    .post-content p { margin-bottom: 1.5em; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="logo">迟雨<span class="logo-dot">.</span></a>
+      <nav class="site-nav">
+        <a href="/#latest" class="nav-link">返回首页</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="post-container">
+    <article>
+      <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+          <span>分类：{{ page.category }}</span> | 
+          <span>发布时间：{{ page.date | date: "%Y-%m-%d" }}</span>
+        </div>
+      </header>
+      
+      <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
+      
+      <div class="post-content">
+        {{ content }}
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 迟雨的学习笔记 · 用文字固化思考</p>
+    </div>
+  </footer>
+</body>
+</html>
