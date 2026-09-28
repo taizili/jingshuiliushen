@@ -1,3 +1,8 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -45,24 +50,29 @@
         </div>
         <div class="post-grid">
 <!-- POSTS:START -->
-          <a href="posts/experiment-example.html" class="post-card">
+         <div class="post-grid">
+          <!-- Jekyll 循环开始，读取所有文章 -->
+          {% for post in site.posts %}
+          <a href="{{ post.url | relative_url }}" class="post-card">
             <div class="post-card-top">
-              <span class="badge badge-experiment">实验方法</span>
-              <span class="post-date">2026-09-26</span>
+              <!-- 根据后台填写的分类，自动匹配不同的 badge 样式（可选） -->
+              <span class="badge badge-experiment">{{ post.category }}</span>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
             </div>
-            <h3 class="post-card-title">示例：一份可复现的实验记录该怎么写</h3>
-            <p class="post-card-excerpt">用「目的 → 步骤 → 参数 → 结果 → 结论」的固定结构记录实验，几个月后还能看懂、还能复现。这篇文章是一个完整模板。</p>
+            <h3 class="post-card-title">{{ post.title }}</h3>
+            <!-- 自动读取后台摘要，如果没有则截取正文前 100 字 -->
+            <p class="post-card-excerpt">
+              {% if post.excerpt %}
+                {{ post.excerpt }}
+              {% else %}
+                {{ post.content | strip_html | truncate: 100 }}
+              {% endif %}
+            </p>
             <span class="post-read-more">阅读全文 →</span>
           </a>
-          <a href="posts/learning-notes-example.html" class="post-card">
-            <div class="post-card-top">
-              <span class="badge badge-learning">学习心得</span>
-              <span class="post-date">2026-09-20</span>
-            </div>
-            <h3 class="post-card-title">示例：费曼学习法在我身上的实测效果</h3>
-            <p class="post-card-excerpt">「用自己的话讲给别人听」听起来简单，坚持一个月后我发现自己读书的习惯发生了三个变化。记录一下做法和感受。</p>
-            <span class="post-read-more">阅读全文 →</span>
-          </a>
+          {% endfor %}
+          <!-- 循环结束 -->
+        </div>
           <!-- POSTS:END -->
         </div>
       </div>
