@@ -3,8 +3,6 @@ layout: null
 ---
 <!DOCTYPE html>
 <html lang="zh-CN">
-<!DOCTYPE html>
-<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +14,7 @@ layout: null
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo"><!-- SITE:NAME:START -->site.data.site.name<!-- SITE:NAME:END --><span class="logo-dot">.</span></a>
+      <a href="index.html" class="logo">{{ site.data.site.name }}<span class="logo-dot">.</span></a>
       <nav class="site-nav">
         <a href="#latest" class="nav-link">最新文章</a>
         <a href="#categories" class="nav-link">分类</a>
@@ -32,8 +30,8 @@ layout: null
     <section class="hero">
       <div class="container hero-inner">
         <p class="hero-eyebrow">学习 · 实验 · 复盘</p>
-        <h1 class="hero-title"><!-- SITE:HERO:START -->{{ site.data.site.heroTitle }}</h1>
-        <p class="hero-subtitle"><!-- SITE:DESC:START -->{{ site.data.site.description }}</p>
+        <h1 class="hero-title">{{ site.data.site.heroTitle }}</h1>
+        <p class="hero-subtitle">{{ site.data.site.description }}</p>
         <div class="hero-actions">
           <a href="#latest" class="btn btn-primary">浏览文章</a>
           <a href="#about" class="btn btn-ghost">关于我</a>
@@ -47,18 +45,14 @@ layout: null
           <h2 class="section-title">最新文章</h2>
         </div>
         <div class="post-grid">
-<!-- POSTS:START -->
-         <div class="post-grid">
           <!-- Jekyll 循环开始，读取所有文章 -->
           {% for post in site.posts %}
           <a href="{{ post.url | relative_url }}" class="post-card">
             <div class="post-card-top">
-              <!-- 根据后台填写的分类，自动匹配不同的 badge 样式（可选） -->
               <span class="badge badge-experiment">{{ post.category }}</span>
               <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
             </div>
             <h3 class="post-card-title">{{ post.title }}</h3>
-            <!-- 自动读取后台摘要，如果没有则截取正文前 100 字 -->
             <p class="post-card-excerpt">
               {% if post.excerpt %}
                 {{ post.excerpt }}
@@ -70,8 +64,6 @@ layout: null
           </a>
           {% endfor %}
           <!-- 循环结束 -->
-        </div>
-          <!-- POSTS:END -->
         </div>
       </div>
     </section>
@@ -104,7 +96,7 @@ layout: null
         <div class="about-text">
           <h2 class="section-title">关于我</h2>
           <p>
-            你好，我是<strong><!-- SITE:NAME:START -->{{ site.data.site.name }}<!-- SITE:NAME:END --></strong>。这个网站是我的「外置大脑」：
+            你好，我是<strong>{{ site.data.site.name }}</strong>。这个网站是我的「外置大脑」：
             学到新东西就整理成笔记，做完实验就把方法记录下来。
           </p>
           <p>
@@ -119,7 +111,7 @@ layout: null
         </div>
         <div class="about-stats">
           <div class="stat">
-            <span class="stat-num">2+</span>
+            <span class="stat-num">{{ site.posts | size }}</span>
             <span class="stat-label">篇笔记</span>
           </div>
           <div class="stat">
