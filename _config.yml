@@ -1,2 +1,9 @@
 url: "https://taizili.github.io"
 baseurl: "/jingshuiliushen"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post

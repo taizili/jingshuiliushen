@@ -1,0 +1,134 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>内容分类 | {{ site.data.site.title }}</title>
+  <meta name="description" content="按分类浏览全部文章">
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  <script src="{{ '/js/main.js' | relative_url }}" defer></script>
+</head>
+<body>
+  {% assign learning = site.posts | where: "category", "学习心得" %}
+  {% assign experiment = site.posts | where: "category", "实验方法" %}
+  {% assign pit = site.posts | where: "category", "踩坑记录" %}
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="{{ '/' | relative_url }}" class="logo">{{ site.data.site.name }}<span class="logo-dot">.</span></a>
+      <nav class="site-nav">
+        <a href="{{ '/' | relative_url }}#latest" class="nav-link">最新文章</a>
+        <a href="{{ '/categories.html' | relative_url }}" class="nav-link">分类</a>
+        <a href="{{ '/' | relative_url }}#about" class="nav-link">关于</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="切换深浅主题" title="切换深浅主题">
+        <span class="theme-icon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero categories-hero">
+      <div class="container">
+        <p class="hero-eyebrow">分类目录</p>
+        <h1 class="hero-title">按主题浏览文章</h1>
+        <p class="hero-subtitle">共 {{ site.posts | size }} 篇 · 三个分类持续更新</p>
+      </div>
+    </section>
+
+    <section class="section" id="学习心得">
+      <div class="container">
+        <div class="category-section-head">
+          <span class="category-icon">📖</span>
+          <div>
+            <h2 class="section-title">学习心得</h2>
+            <p class="category-desc">读书笔记、课程总结、学习方法论。</p>
+          </div>
+          <span class="badge badge-learning">{{ learning | size }} 篇</span>
+        </div>
+        <div class="post-grid">
+          {% for post in learning %}
+          <a href="{{ post.url | relative_url }}" class="post-card">
+            <div class="post-card-top">
+              <span class="badge badge-learning">{{ post.category }}</span>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </div>
+            <h3 class="post-card-title">{{ post.title }}</h3>
+            <p class="post-card-excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 100 }}</p>
+            <span class="post-read-more">阅读全文 →</span>
+          </a>
+          {% else %}
+          <p class="empty-hint">这个分类还没有文章</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="实验方法">
+      <div class="container">
+        <div class="category-section-head">
+          <span class="category-icon">🧪</span>
+          <div>
+            <h2 class="section-title">实验方法</h2>
+            <p class="category-desc">可复现的操作步骤、参数设置、结果分析。</p>
+          </div>
+          <span class="badge badge-experiment">{{ experiment | size }} 篇</span>
+        </div>
+        <div class="post-grid">
+          {% for post in experiment %}
+          <a href="{{ post.url | relative_url }}" class="post-card">
+            <div class="post-card-top">
+              <span class="badge badge-experiment">{{ post.category }}</span>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </div>
+            <h3 class="post-card-title">{{ post.title }}</h3>
+            <p class="post-card-excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 100 }}</p>
+            <span class="post-read-more">阅读全文 →</span>
+          </a>
+          {% else %}
+          <p class="empty-hint">这个分类还没有文章</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="踩坑记录">
+      <div class="container">
+        <div class="category-section-head">
+          <span class="category-icon">🕳️</span>
+          <div>
+            <h2 class="section-title">踩坑记录</h2>
+            <p class="category-desc">错误信息、原因分析、解决办法。</p>
+          </div>
+          <span class="badge badge-pit">{{ pit | size }} 篇</span>
+        </div>
+        <div class="post-grid">
+          {% for post in pit %}
+          <a href="{{ post.url | relative_url }}" class="post-card">
+            <div class="post-card-top">
+              <span class="badge badge-pit">{{ post.category }}</span>
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </div>
+            <h3 class="post-card-title">{{ post.title }}</h3>
+            <p class="post-card-excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 100 }}</p>
+            <span class="post-read-more">阅读全文 →</span>
+          </a>
+          {% else %}
+          <p class="empty-hint">这个分类还没有文章</p>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© {{ site.time | date: "%Y" }} {{ site.data.site.title }} · 用文字固化思考</p>
+      <a href="{{ '/' | relative_url }}" class="back-top">回到首页 ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

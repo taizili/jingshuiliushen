@@ -8,13 +8,13 @@ layout: null
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.data.site.title }}</title>
   <meta name="description" content="{{ site.data.site.description }}">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  <script src="{{ '/js/main.js' | relative_url }}" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">{{ site.data.site.name }}<span class="logo-dot">.</span></a>
+      <a href="{{ '/' | relative_url }}" class="logo">{{ site.data.site.name }}<span class="logo-dot">.</span></a>
       <nav class="site-nav">
         <a href="#latest" class="nav-link">最新文章</a>
         <a href="#categories" class="nav-link">分类</a>
@@ -30,8 +30,8 @@ layout: null
     <section class="hero">
       <div class="container hero-inner">
         <p class="hero-eyebrow">学习 · 实验 · 复盘</p>
-        <h1 class="hero-title">{{ site.data.site.heroTitle }}</h1>
-        <p class="hero-subtitle">{{ site.data.site.description }}</p>
+        <h1 class="hero-title">{{ site.data.site.heroTitle | newline_to_br }}</h1>
+        <p class="hero-subtitle">{{ site.data.site.description | newline_to_br }}</p>
         <div class="hero-actions">
           <a href="#latest" class="btn btn-primary">浏览文章</a>
           <a href="#about" class="btn btn-ghost">关于我</a>
@@ -43,13 +43,16 @@ layout: null
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">最新文章</h2>
+          <a href="{{ '/categories.html' | relative_url }}" class="section-more">查看全部 →</a>
         </div>
         <div class="post-grid">
-          <!-- Jekyll 循环开始，读取所有文章 -->
           {% for post in site.posts %}
+          {% assign badge = "badge-experiment" %}
+          {% if post.category == "学习心得" %}{% assign badge = "badge-learning" %}{% endif %}
+          {% if post.category == "踩坑记录" %}{% assign badge = "badge-pit" %}{% endif %}
           <a href="{{ post.url | relative_url }}" class="post-card">
             <div class="post-card-top">
-              <span class="badge badge-experiment">{{ post.category }}</span>
+              <span class="badge {{ badge }}">{{ post.category }}</span>
               <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
             </div>
             <h3 class="post-card-title">{{ post.title }}</h3>
@@ -63,7 +66,6 @@ layout: null
             <span class="post-read-more">阅读全文 →</span>
           </a>
           {% endfor %}
-          <!-- 循环结束 -->
         </div>
       </div>
     </section>
@@ -72,21 +74,21 @@ layout: null
       <div class="container">
         <h2 class="section-title">内容分类</h2>
         <div class="category-grid">
-          <div class="category-card">
+          <a href="{{ '/categories.html' | relative_url }}#学习心得" class="category-card">
             <div class="category-icon">📖</div>
             <h3>学习心得</h3>
             <p>读书笔记、课程总结、学习方法论。重点记录「我理解了什么」，而不是「书上写了什么」。</p>
-          </div>
-          <div class="category-card">
+          </a>
+          <a href="{{ '/categories.html' | relative_url }}#实验方法" class="category-card">
             <div class="category-icon">🧪</div>
             <h3>实验方法</h3>
             <p>可复现的操作步骤、参数设置、结果分析。写清楚条件，让未来的自己能照着再做一遍。</p>
-          </div>
-          <div class="category-card">
+          </a>
+          <a href="{{ '/categories.html' | relative_url }}#踩坑记录" class="category-card">
             <div class="category-icon">🕳️</div>
             <h3>踩坑记录</h3>
             <p>错误信息、原因分析、解决办法。坑踩一次就够了，记下来别再踩第二次。</p>
-          </div>
+          </a>
         </div>
       </div>
     </section>
