@@ -8,15 +8,15 @@ layout: null
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>迟雨的学习笔记</title>
-  <meta name="description" content="这里记录我的学习心得、实验方法和踩过的坑。">
+  <title>{{ site.data.site.title }}</title>
+  <meta name="description" content="{{ site.data.site.description }}">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo"><!-- SITE:NAME:START -->迟雨<!-- SITE:NAME:END --><span class="logo-dot">.</span></a>
+      <a href="index.html" class="logo"><!-- SITE:NAME:START -->site.data.site.name<!-- SITE:NAME:END --><span class="logo-dot">.</span></a>
       <nav class="site-nav">
         <a href="#latest" class="nav-link">最新文章</a>
         <a href="#categories" class="nav-link">分类</a>
@@ -32,10 +32,8 @@ layout: null
     <section class="hero">
       <div class="container hero-inner">
         <p class="hero-eyebrow">学习 · 实验 · 复盘</p>
-        <h1 class="hero-title"><!-- SITE:HERO:START -->把学到的东西，<br>
-写下来才算真的学会。<!-- SITE:HERO:END --></h1>
-        <p class="hero-subtitle"><!-- SITE:DESC:START -->这里记录我的学习心得、实验方法和踩过的坑。<br>
-每篇文章都尽量做到：看得懂、能复现、有结论。<!-- SITE:DESC:END --></p>
+        <h1 class="hero-title"><!-- SITE:HERO:START -->{{ site.data.site.heroTitle }}</h1>
+        <p class="hero-subtitle"><!-- SITE:DESC:START -->{{ site.data.site.description }}</p>
         <div class="hero-actions">
           <a href="#latest" class="btn btn-primary">浏览文章</a>
           <a href="#about" class="btn btn-ghost">关于我</a>
@@ -106,7 +104,7 @@ layout: null
         <div class="about-text">
           <h2 class="section-title">关于我</h2>
           <p>
-            你好，我是<strong><!-- SITE:NAME:START -->迟雨<!-- SITE:NAME:END --></strong>。这个网站是我的「外置大脑」：
+            你好，我是<strong><!-- SITE:NAME:START -->{{ site.data.site.name }}<!-- SITE:NAME:END --></strong>。这个网站是我的「外置大脑」：
             学到新东西就整理成笔记，做完实验就把方法记录下来。
           </p>
           <p>
@@ -139,7 +137,7 @@ layout: null
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p><!-- SITE:FOOTER:START -->© 2026 迟雨的学习笔记 · 用文字固化思考<!-- SITE:FOOTER:END --></p>
+      <p>© {{ site.time | date: "%Y" }} {{ site.data.site.title }} · 用文字固化思考</p>
       <a href="#top" class="back-top">回到顶部 ↑</a>
     </div>
   </footer>
