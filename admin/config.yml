@@ -40,7 +40,7 @@ collections:
     files:
       - label: 基本设置
         name: site
-        file: site.json
+        file: _data/site.json
         fields:
           - { label: 你的名字, name: name, widget: string }
           - { label: 网站名称, name: title, widget: string }
