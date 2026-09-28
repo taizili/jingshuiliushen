@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>迟雨的学习笔记</title>
+  <meta name="description" content="这里记录我的学习心得、实验方法和踩过的坑。">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><!-- SITE:NAME:START -->迟雨<!-- SITE:NAME:END --><span class="logo-dot">.</span></a>
+      <nav class="site-nav">
+        <a href="#latest" class="nav-link">最新文章</a>
+        <a href="#categories" class="nav-link">分类</a>
+        <a href="#about" class="nav-link">关于</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="切换深浅主题" title="切换深浅主题">
+        <span class="theme-icon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">学习 · 实验 · 复盘</p>
+        <h1 class="hero-title"><!-- SITE:HERO:START -->把学到的东西，<br>
+写下来才算真的学会。<!-- SITE:HERO:END --></h1>
+        <p class="hero-subtitle"><!-- SITE:DESC:START -->这里记录我的学习心得、实验方法和踩过的坑。<br>
+每篇文章都尽量做到：看得懂、能复现、有结论。<!-- SITE:DESC:END --></p>
+        <div class="hero-actions">
+          <a href="#latest" class="btn btn-primary">浏览文章</a>
+          <a href="#about" class="btn btn-ghost">关于我</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="latest">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">最新文章</h2>
+        </div>
+        <div class="post-grid">
+<!-- POSTS:START -->
+          <a href="posts/experiment-example.html" class="post-card">
+            <div class="post-card-top">
+              <span class="badge badge-experiment">实验方法</span>
+              <span class="post-date">2026-09-26</span>
+            </div>
+            <h3 class="post-card-title">示例：一份可复现的实验记录该怎么写</h3>
+            <p class="post-card-excerpt">用「目的 → 步骤 → 参数 → 结果 → 结论」的固定结构记录实验，几个月后还能看懂、还能复现。这篇文章是一个完整模板。</p>
+            <span class="post-read-more">阅读全文 →</span>
+          </a>
+          <a href="posts/learning-notes-example.html" class="post-card">
+            <div class="post-card-top">
+              <span class="badge badge-learning">学习心得</span>
+              <span class="post-date">2026-09-20</span>
+            </div>
+            <h3 class="post-card-title">示例：费曼学习法在我身上的实测效果</h3>
+            <p class="post-card-excerpt">「用自己的话讲给别人听」听起来简单，坚持一个月后我发现自己读书的习惯发生了三个变化。记录一下做法和感受。</p>
+            <span class="post-read-more">阅读全文 →</span>
+          </a>
+          <!-- POSTS:END -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="categories">
+      <div class="container">
+        <h2 class="section-title">内容分类</h2>
+        <div class="category-grid">
+          <div class="category-card">
+            <div class="category-icon">📖</div>
+            <h3>学习心得</h3>
+            <p>读书笔记、课程总结、学习方法论。重点记录「我理解了什么」，而不是「书上写了什么」。</p>
+          </div>
+          <div class="category-card">
+            <div class="category-icon">🧪</div>
+            <h3>实验方法</h3>
+            <p>可复现的操作步骤、参数设置、结果分析。写清楚条件，让未来的自己能照着再做一遍。</p>
+          </div>
+          <div class="category-card">
+            <div class="category-icon">🕳️</div>
+            <h3>踩坑记录</h3>
+            <p>错误信息、原因分析、解决办法。坑踩一次就够了，记下来别再踩第二次。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-inner">
+        <div class="about-text">
+          <h2 class="section-title">关于我</h2>
+          <p>
+            你好，我是<strong><!-- SITE:NAME:START -->迟雨<!-- SITE:NAME:END --></strong>。这个网站是我的「外置大脑」：
+            学到新东西就整理成笔记，做完实验就把方法记录下来。
+          </p>
+          <p>
+            我相信写作是最好的思考工具——如果你不能简单地解释一件事，
+            说明你还没有真正理解它。
+          </p>
+          <div class="about-links">
+            <a href="#">GitHub</a>
+            <a href="#">邮箱</a>
+            <a href="#">RSS</a>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">2+</span>
+            <span class="stat-label">篇笔记</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">3</span>
+            <span class="stat-label">个分类</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">持续更新</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><!-- SITE:FOOTER:START -->© 2026 迟雨的学习笔记 · 用文字固化思考<!-- SITE:FOOTER:END --></p>
+      <a href="#top" class="back-top">回到顶部 ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
