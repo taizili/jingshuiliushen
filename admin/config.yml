@@ -1,0 +1,45 @@
+locale: zh_Hans
+
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+  branch: main
+  # 一次性配置：注册 https://decapbridge.com 后，
+  # 把它给你的 base_url 和 auth_endpoint 替换到下面两行
+  base_url: https://decapbridge.com
+  auth_endpoint: auth/YOUR_BRIDGE_ID
+
+site_url: https://YOUR_GITHUB_USERNAME.github.io
+
+media_folder: assets/images
+public_folder: /assets/images
+
+collections:
+  - name: posts
+    label: 文章
+    label_singular: 文章
+    folder: content/posts
+    create: true
+    extension: md
+    format: frontmatter
+    sortable_fields: [date, title]
+    summary: "{{title}} · {{date}}"
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 发布日期, name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: 分类, name: category, widget: select, options: [实验方法, 学习心得, 踩坑记录] }
+      - { label: 网址后缀（小写英文和短横线，留空自动生成）, name: slug, widget: string, required: false, pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "只允许小写英文字母、数字和短横线"] }
+      - { label: 摘要（显示在首页）, name: excerpt, widget: text }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: settings
+    label: 网站设置
+    files:
+      - label: 基本设置
+        name: site
+        file: site.json
+        fields:
+          - { label: 你的名字, name: name, widget: string }
+          - { label: 网站名称, name: title, widget: string }
+          - { label: 首页大标题, name: heroTitle, widget: text }
+          - { label: 网站简介, name: description, widget: text }
