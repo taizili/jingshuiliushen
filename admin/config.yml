@@ -20,7 +20,8 @@ collections:
   - name: posts
     label: 文章
     label_singular: 文章
-    folder: content/posts
+    folder: _posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # 👈 修改 2：新增这一行，让生成的文件名自带日期
     create: true
     extension: md
     format: frontmatter
