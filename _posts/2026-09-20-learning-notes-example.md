@@ -35,7 +35,7 @@ layout: post
 问题现象：通过无痕模式排除了缓存干扰后，发现由 `_layouts/post.html` 生成的文章详情页变成了纯白底色（样式丢失），且点击导航栏的“返回首页”会跳转到 404 页面。
 
 根本原因与解决：当 GitHub Pages 托管在子目录（如 `[https://username.github.io/repo-name/](https://username.github.io/repo-name/)`）时，如果在 HTML 中直接写 `/css/style.css` 或 `/`，浏览器会默认跳转到最顶级的根域名（`username.github.io`），从而导致资源迷路。
-
+{% raw %}
 对策（强制物理路径拼接）：
 
 1. 在仓库根目录新建 `_config.yml` 文件，声明基础路径：
@@ -43,6 +43,7 @@ layout: post
 
    * 引入样式：`<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">`
    * 跳转首页：`<a href="{{ site.baseurl }}/#latest" class="nav-link">返回首页</a>`
+{% endraw %}
 
 **总结与经验**
 
