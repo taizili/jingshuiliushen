@@ -33,25 +33,14 @@ collections:
       - { label: 网址后缀（小写英文和短横线，留空自动生成）, name: slug, widget: string, required: false, pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "只允许小写英文字母、数字和短横线"] }
       - { label: 摘要（显示在首页）, name: excerpt, widget: text }
 
-      # 核心防护：后台发文自动注入，禁止 Jekyll 将正文当模板解析，彻底杜绝报错与截断
+      # 核心防护：后台发文自动注入，禁止 Jekyll 将正文当模板解析，杜绝报错与截断
       - { label: "Liquid 解析保护", name: render_with_liquid, widget: hidden, default: false }
 
-      # 正文编辑器：启用代码块按钮与富文本/纯文本双模式
+      # 正文编辑器：保留双模式，移除报错的自定义 buttons，改用原生完整工具栏
       - label: 正文
         name: body
         widget: markdown
         modes: ["rich_text", "raw"]
-        buttons:
-          - bold
-          - italic
-          - code
-          - link
-          - heading-two
-          - heading-three
-          - quote
-          - code-block
-          - bulleted-list
-          - numbered-list
 
   - name: settings
     label: 网站设置
